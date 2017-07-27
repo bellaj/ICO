@@ -108,7 +108,7 @@ contract ICO is ERC20, SafeMath{
 	}
 
 	function createTokens(address recipient) payable {
-		require (msg.value != 0);
+		require (msg.value > 0);
 
 		uint tokens = safeDiv(safeMul(msg.value, price), 1 ether);
 		totalSupply = safeAdd(totalSupply, tokens);
