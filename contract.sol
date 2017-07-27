@@ -96,7 +96,7 @@ contract ICO is ERC20, SafeMath{
 	uint256 public endTime;
 
 	modifier during_offering_time(){
-		require (now =< endTime);
+		require (now < endTime);
 			_;
 		
 	}
