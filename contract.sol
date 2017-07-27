@@ -24,11 +24,11 @@ contract SafeMath{
     	assert(c >= a);
     	return c;
   }
-	function assert(bool assertion) internal {
+	/* function assert(bool assertion) internal {
 	    if (!assertion) {
 	      throw;
 	    }
-	}
+	} */ //introduced in solidity 0.4.10, uncomment if you are using previous compiler
 }
 
 
@@ -96,11 +96,9 @@ contract ICO is ERC20, SafeMath{
 	uint256 public endTime;
 
 	modifier during_offering_time(){
-		if (now >= endTime){
-			throw;
-		}else{
+		require (now =< endTime);
 			_;
-		}
+		
 	}
 
 	function () payable during_offering_time {
